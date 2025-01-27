@@ -9,7 +9,6 @@ Web applications play a vital role in various critical aspects of daily life, fr
 - [Installation](#installation)
 - [Usage](#usage)
 - [File Descriptions](#file-descriptions)
-- [Contributing](#contributing)
 - [License](#license)
 
 ---
