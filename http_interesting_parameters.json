@@ -1,0 +1,72 @@
+{
+    "cookies" : {
+        "name" : {
+            "regexes" : {
+                "identifier" : ["^\\d{5,}$", ".*id$"]
+            },
+            "keywords" : {
+                "identifier" : ["identifier", "identification", "identification_number"],
+                "password" : ["password", "pass", "pwd"],
+                "username" : ["username", "user"],
+                "file" : ["file", "upload", "upload_file"],
+                "authentication" : ["token", "auth", "authentication"],
+                "login" : ["login", "signin", "sign_in", "sign_in", "sign-in"]
+            }
+        },
+        "value" : {
+            "regexes" : {
+            }, 
+            "keywords" : {
+            }
+        }
+    },
+    "headers" : {
+        "name" : {
+            "regexes" : {
+                "identifier" : ["^\\d{5,}$", ".*id$"]
+            },
+            "keywords" : {
+                "timestamp": ["time"],
+                "identifier" : ["identifier", "identification", "identification_number"],
+                "password" : ["password", "pass", "pwd"],
+                "username" : ["username", "user"],
+                "file" : ["file", "upload", "upload_file"],
+                "authentication" : ["token", "auth", "authentication"],
+                "login" : ["login", "signin", "sign_in", "sign_in", "sign-in"]
+
+            }
+        },
+        "value" : {
+            "regexes" : {
+            }, 
+            "keywords" : {
+            }
+        }
+    },
+    "parameters" : {
+        "name" : {
+            "regexes" : {
+                "identifier" : ["^\\d{5,}$", ".*id$"]
+            },
+            "keywords" : {
+                "identifier" : ["identifier", "identification", "identification_number"],
+                "email" : ["email", "mail", "e-mail"],
+                "password" : ["password", "pass", "pwd"],
+                "username" : ["username", "user"],
+                "file" : ["file", "upload", "upload_file"],
+                "amount" : ["amount", "price", "cost", "value", "total"],
+                "authentication" : ["token", "auth", "authentication"],
+                "login" : ["login", "signin", "sign_in", "sign_in", "sign-in"]
+
+            }
+        },
+        "value" : {
+            "regexes" : {
+                "email" : ["^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"]
+            }, 
+            "keywords" : {
+                "file_extension" : [".txt", ".csv", ".pdf", ".docx"]
+            }
+        }
+    }
+}

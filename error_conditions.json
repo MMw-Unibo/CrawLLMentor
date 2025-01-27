@@ -1,0 +1,6 @@
+{
+    "keywords" : ["error", "not found"],
+    "response_codes": [404],
+    "regexes" : []
+
+}
