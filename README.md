@@ -1,9 +1,8 @@
 # README
 
 ## Project Overview
-Web applications play a vital role in various critical aspects of daily life, from social platforms to healthcare and banking systems. Their widespread use and the massive volume of data flowing through them make them an attractive target for cyberattacks. While numerous tools exist to identify vulnerabilities, most focus primarily on technical issues. Business logic vulnerabilities, however, are often overlooked due to the challenges associated with their automated detection.
+Web applications play a vital role in various critical aspects of daily life, from social platforms to healthcare and banking systems. Their widespread use and the massive volume of data flowing through them make them an attractive target for cyberattacks. While numerous tools exist to identify vulnerabilities, most focus primarily on technical issues. Business logic vulnerabilities, however, are often overlooked due to the challenges associated with their automated detection. In this paper, we present CrawLLMentor, a novel black-box framework designed to assist penetration testers in identifying business logic vulnerabilities. The framework acts as an intelligent assistant for penetration testers, leveraging Large Language Models (LLMs) to analyze the semantics of web pages and enabling a deeper understanding of HTML element functionalities. By providing insights into the website’s structure and behavior, the tool helps testers uncover potential flaws in business logic. We implemented and tested the tool on several web applications, demonstrating its effectiveness in real-world scenarios. This innovative approach enhances the security of web applications, addressing a critical gap in cybersecurity.
 
-In this paper, we present CrawLLMentor, a novel black-box framework designed to assist penetration testers in identifying business logic vulnerabilities. The framework acts as an intelligent assistant for penetration testers, leveraging Large Language Models (LLMs) to analyze the semantics of web pages and enabling a deeper understanding of HTML element functionalities. By providing insights into the website’s structure and behavior, the tool helps testers uncover potential flaws in business logic. We implemented and tested the tool on several web applications, demonstrating its effectiveness in real-world scenarios. This innovative approach enhances the security of web applications, addressing a critical gap in cybersecurity.
 ---
 
 ## Table of Contents
@@ -30,6 +29,8 @@ In this paper, we present CrawLLMentor, a novel black-box framework designed to 
 3. **Set up the OpenAI API key:**
    - Create a file named `api_key.txt` in the root directory.
    - Add your OpenAI API key to this file.
+  
+4. **Create a folder to save the results.**
 
 ---
 
@@ -70,25 +71,6 @@ python selenium_crawler.py -bu <base_url> -wl <white_list> -d <results_directory
 - **`http_interesting_parameters.json`**: JSON file defining interesting HTTP parameters.
 - **`open-cookie-database.csv`**: CSV file containing cookie data.
 
----
-
-## Contributing
-1. Fork the repository.
-2. Create a new branch:
-   ```bash
-   git checkout -b <branch_name>
-   ```
-3. Make your changes and commit them:
-   ```bash
-   git commit -m "<commit_message>"
-   ```
-4. Push to the branch:
-   ```bash
-   git push origin <branch_name>
-   ```
-5. Submit a pull request.
-
----
 
 ## License
 This project is licensed under the MIT License. See the `LICENSE` file for details.
