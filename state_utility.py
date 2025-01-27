@@ -67,7 +67,6 @@ def generate_state_actions(driver, chatgpt, visited_urls, white_list = []):
             elements_id = []
 
             meanings_rects = []
-            #divs = driver.find_elements(By.TAG_NAME, "div")
             links = driver.find_elements(By.TAG_NAME, "a")
             buttons = driver.find_elements(By.TAG_NAME, "button")
             inputs = driver.find_elements(By.TAG_NAME, "input")
@@ -82,7 +81,8 @@ def generate_state_actions(driver, chatgpt, visited_urls, white_list = []):
                     if l.is_displayed() and l.id not in elements_id and l.size['height'] > 0 and l.size['width'] > 0 and not str(l.get_attribute("href")).startswith("mailto"):
                         
                         if chatgpt:
-                            meaning = "link"#chatgpt.ask("In max 5 words, which is the semantic meaning of this HTML element?", clean_outer_html(l.get_attribute("outerHTML")))
+                            #meaning = "link"
+                            meaning = chatgpt.ask("In max 5 words, which is the semantic meaning of this HTML element?", clean_outer_html(l.get_attribute("outerHTML")))
                             meanings_rects.append((meaning, l.rect))
                         elements_id.append(l.id)
                         actions.append(Follow(parse_html_element(l), True))
@@ -93,7 +93,8 @@ def generate_state_actions(driver, chatgpt, visited_urls, white_list = []):
                 for b in buttons_in_form:
                     if b.is_displayed() and b.id not in elements_id and b.size['height'] > 0 and b.size['width'] > 0:
                         if chatgpt:
-                            meaning = "button"#chatgpt.ask("In max 5 words, which is the semantic meaning of this HTML element?",  clean_outer_html(b.get_attribute("outerHTML")))
+                            #meaning = "button"
+                            meaning = chatgpt.ask("In max 5 words, which is the semantic meaning of this HTML element?",  clean_outer_html(b.get_attribute("outerHTML")))
                             meanings_rects.append((meaning, b.rect))
                         elements_id.append(b.id)
                         actions.append(Click(parse_html_element(b), By.TAG_NAME, "button", True))
@@ -105,7 +106,8 @@ def generate_state_actions(driver, chatgpt, visited_urls, white_list = []):
                 for i in inputs_in_form:
                     if i.is_displayed() and i.id not in elements_id and i.size['height'] > 0 and i.size['width'] > 0:
                         if chatgpt:
-                            meaning = "input"#chatgpt.ask("In max 5 words, which is the semantic meaning of this HTML element?",  clean_outer_html(i.get_attribute("outerHTML")))
+                            #meaning = "input"
+                            meaning = chatgpt.ask("In max 5 words, which is the semantic meaning of this HTML element?",  clean_outer_html(i.get_attribute("outerHTML")))
                             meanings_rects.append((meaning, i.rect))
                         if i.get_attribute("type") == "text":
                             if i.get_attribute("value") == "":  
@@ -124,7 +126,8 @@ def generate_state_actions(driver, chatgpt, visited_urls, white_list = []):
                 for s in selects_in_form:
                     if s.is_displayed() and s.id not in elements_id and s.size['height'] > 0 and s.size['width'] > 0:
                         if chatgpt:
-                            meaning = "select"#chatgpt.ask("In max 5 words, which is the semantic meaning of this HTML element?",  clean_outer_html(s.get_attribute("outerHTML")))
+                            #meaning = "select"
+                            meaning = chatgpt.ask("In max 5 words, which is the semantic meaning of this HTML element?",  clean_outer_html(s.get_attribute("outerHTML")))
                             meanings_rects.append((meaning, s.rect))
                         elements_id.append(s.id)
                         sel = SelectSelenium(s)
@@ -134,28 +137,6 @@ def generate_state_actions(driver, chatgpt, visited_urls, white_list = []):
                         state.append(parse_html_element(s))
                 if len(select_temp) > 2:
                     actions.append(MultipleActions(select_temp))
-
-            '''for d in divs:
-                res = driver.execute_script("return arguments[0];", d)
-                result = driver.execute_cdp_cmd("Runtime.evaluate", {
-                        "expression": "arg0",
-                        "args": [{"objectId": driver.execute_script("return arguments[0];", d)}]
-                    })
-                object_id = driver.execute_cdp_cmd("Runtime.evaluate", {
-                        "expression": "arguments[0]",
-                        "args": d
-                    })                
-                listeners = driver.execute_cdp_cmd("DOMDebugger.getEventListeners", {"objectId": d.id})
-                if listeners['listeners']:
-                    continue
-                if d.is_displayed() and d.id not in elements_id and d.size['height'] > 0 and d.size['width'] > 0 :
-                    if chatgpt:
-                        meaning = chatgpt.ask("In max 5 words, which is the semantic meaning of this HTML element?",  clean_outer_html(d.get_attribute("outerHTML")))
-                        meanings_rects.append((meaning, d.rect))
-                    elements_id.append(d.id)
-                    actions.append(Follow(parse_html_element(d), True))
-                    state.append(parse_html_element(d))
-            '''
             for l in links:
                 if str(l.get_attribute("href")).startswith("http") and not check_url_white_list(str(l.get_attribute("href")).split('/')[2], white_list):
                     continue
@@ -163,7 +144,8 @@ def generate_state_actions(driver, chatgpt, visited_urls, white_list = []):
 
                     
                     if chatgpt:
-                        meaning = "link"#chatgpt.ask("In max 5 words, which is the semantic meaning of this HTML element?", clean_outer_html(l.get_attribute("outerHTML")))
+                        #meaning = "link"
+                        meaning = chatgpt.ask("In max 5 words, which is the semantic meaning of this HTML element?", clean_outer_html(l.get_attribute("outerHTML")))
                         meanings_rects.append((meaning, l.rect))
                     elements_id.append(l.id)
                     actions.append(Follow(parse_html_element(l)))
@@ -173,7 +155,8 @@ def generate_state_actions(driver, chatgpt, visited_urls, white_list = []):
             for b in buttons:
                 if b.is_displayed() and b.id not in elements_id and b.size['height'] > 0 and b.size['width'] > 0:
                     if chatgpt:
-                        meaning = "button"#chatgpt.ask("In max 5 words, which is the semantic meaning of this HTML element?",  clean_outer_html(b.get_attribute("outerHTML")))
+                        #meaning = "button"
+                        meaning = chatgpt.ask("In max 5 words, which is the semantic meaning of this HTML element?",  clean_outer_html(b.get_attribute("outerHTML")))
                         meanings_rects.append((meaning, b.rect))
                     elements_id.append(b.id)
                     actions.append(Click(parse_html_element(b), By.TAG_NAME, "button"))
@@ -183,7 +166,8 @@ def generate_state_actions(driver, chatgpt, visited_urls, white_list = []):
             for i in inputs:
                 if i.is_displayed() and i.id not in elements_id and i.size['height'] > 0 and i.size['width'] > 0:
                     if chatgpt:
-                        meaning = "input"#chatgpt.ask("In max 5 words, which is the semantic meaning of this HTML element?",  clean_outer_html(i.get_attribute("outerHTML")))
+                        #meaning = "input"
+                        meaning = chatgpt.ask("In max 5 words, which is the semantic meaning of this HTML element?",  clean_outer_html(i.get_attribute("outerHTML")))
                         meanings_rects.append((meaning, i.rect))
                     if i.get_attribute("type") == "text":
                         if i.get_attribute("value") == "":  
@@ -199,7 +183,8 @@ def generate_state_actions(driver, chatgpt, visited_urls, white_list = []):
             for s in selects:
                 if s.is_displayed() and s.id not in elements_id and s.size['height'] > 0 and s.size['width'] > 0:
                     if chatgpt:
-                        meaning = "select"#chatgpt.ask("In max 5 words, which is the semantic meaning of this HTML element?",  clean_outer_html(s.get_attribute("outerHTML")))
+                        #meaning = "select"
+                        meaning = chatgpt.ask("In max 5 words, which is the semantic meaning of this HTML element?",  clean_outer_html(s.get_attribute("outerHTML")))
                         meanings_rects.append((meaning, s.rect))
                     elements_id.append(s.id)
                     sel = SelectSelenium(s)
@@ -219,8 +204,6 @@ def generate_state_actions(driver, chatgpt, visited_urls, white_list = []):
                 if i > 3000:
                     break
                 if body_elements[i].tag_name in hidden_tags or not body_elements[i].is_displayed():
-                    #attrs = driver.execute_script('var items = {}; for (index = 0; index < arguments[0].attributes.length; ++index) { items[arguments[0].attributes[index].name] = arguments[0].attributes[index].value }; return items;', body_elements[i])
-                    #attrs['tag'] = body_elements[i].tag_name
                     hidden_elements.append(body_elements[i].get_attribute("outerHTML"))
                     childs = body_elements[i].find_elements(By.XPATH, ".//*")
                     i = i + len(childs) + 1
@@ -228,9 +211,7 @@ def generate_state_actions(driver, chatgpt, visited_urls, white_list = []):
                     if body_elements[i].text:
                         visible_text += body_elements[i].text + " "
                     o_h = body_elements[i].get_attribute("outerHTML")
-                    #outer_html = html.escape(body_elements[i].get_attribute("outerHTML"))
                     s1 = """Array.from(document.querySelectorAll("*")).find(el => el.outerHTML === '"""+ o_h+ """')"""
-                    #s = 'Array.from(document.querySelectorAll("*")).find(el => el.outerHTML === "'+ outer_html+ '")'
                     res = driver.execute_cdp_cmd("Runtime.evaluate", {"expression": s1})['result']
                     event_listeners = None
                     if res == None or res.get('className') == None:
@@ -242,7 +223,8 @@ def generate_state_actions(driver, chatgpt, visited_urls, white_list = []):
                     if event_listeners and event_listeners['listeners'] and any(event['type'] == "click" for event in event_listeners['listeners']):           
                         if body_elements[i].is_displayed() and body_elements[i].id not in elements_id and body_elements[i].size['height'] > 0 and body_elements[i].size['width'] > 0:
                             if chatgpt:
-                                meaning = "click"#chatgpt.ask("In max 5 words, which is the semantic meaning of this HTML element?",  clean_outer_html(b.get_attribute("outerHTML")))
+                                #meaning = "click"
+                                meaning = chatgpt.ask("In max 5 words, which is the semantic meaning of this HTML element?",  clean_outer_html(b.get_attribute("outerHTML")))
                                 meanings_rects.append((meaning, body_elements[i].rect))
                             elements_id.append(body_elements[i].id)
                             actions.append(Click(parse_html_element(body_elements[i]), By.TAG_NAME, body_elements[i].tag_name, False))
@@ -257,10 +239,6 @@ def generate_state_actions(driver, chatgpt, visited_urls, white_list = []):
                     break
                 try:
                     element = all_elements[i]
-                    '''attrs = dict(element.attrs)
-                    if attrs.get('class'):
-                        attrs['class'] = " ".join(attrs.get('class', []))
-                    attrs['tag'] = element.name'''
                     if str(element) not in hidden_elements or str(element).startswith("<body>"):
                         attrs = dict(element.attrs)
                         for attr in attrs:
@@ -356,19 +334,6 @@ def move_to_state(path, driver, base_url, DG_state_action, white_list):
 def check_presence(currentState, graphs, nodes, currentAction):
     if graphs.node_in_graph(deterministic_hash(currentState)):
         return True, currentState
-    
-    
-    """ if isinstance(currentAction, Type):
-        for node_hash in nodes:
-            if nodes[node_hash].get('state'):
-                visible_text = nodes[node_hash].get('state')['visible_text']
-                url = nodes[node_hash].get('state')['url']
-                if 'id' in url: 
-                    pass
-                rate = fuzz.ratio(nodes[node_hash].get('state')['visible_text'], currentState.get_visible_text())
-                if rate > 90:
-                    return True, nodes[node_hash] """
-    
     return False, currentState
 
 

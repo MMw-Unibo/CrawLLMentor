@@ -18,8 +18,12 @@ class ChatGpt:
             api_key=api_key,
         )
         self._file = "./"+chatgpt_directory+"/chatgpt_cache.json"
-        with open(self._file, "r") as f:
-            self.chatgpt_cache = json.load(f)
+        #check if file exists
+        try:
+            with open(self._file, "r") as f:
+                self.chatgpt_cache = json.load(f)
+        except:
+            self.chatgpt_cache = {}
 
 
         

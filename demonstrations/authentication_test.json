@@ -1,0 +1,56 @@
+{
+    "url" : "test_url",
+    "login_page_detection" : {
+        "elements" : {
+            "input" : ["email", "password", "continua"]
+        }
+    },
+    "actions" : [
+        {"action_name" : "Type",
+        "keywords": ["email"],
+        "parameter" : "test@test.com"},
+        {"action_name" : "Type",
+        "keywords": ["password"],
+    "parameter": "1111"},
+        {"action_name" : "Click",
+        "keywords": ["continua"]},
+        {"action_name" : "Wait",
+        "seconds": 10},
+        {"action_name" : "Follow",
+        "keywords": ["con il QR code"]},
+        {"action_name" : "Wait",
+        "seconds": 10},
+        {"action_name" : "MultipleActions",
+        "actions" : [
+        {"action_name" : "Type",
+        "keywords": ["verify-code-box-otp-char"],
+        "parameter": "1"},
+        {"action_name" : "Type",
+        "keywords": ["verify-code-box-otp-char"],
+        "parameter": "1"},
+        {"action_name" : "Type",
+        "keywords": ["verify-code-box-otp-char"],
+        "parameter": "1"},
+        {"action_name" : "Type",
+        "keywords": ["verify-code-box-otp-char"],
+        "parameter": "1"},
+        {"action_name" : "Type",
+        "keywords": ["verify-code-box-otp-char"],
+        "parameter": "1"},
+        {"action_name" : "Type",
+        "keywords": ["verify-code-box-otp-char"],
+        "parameter": "1"},
+        {"action_name" : "Type",
+        "keywords": ["verify-code-box-otp-char"],
+        "parameter": "1"},
+        {"action_name" : "Type",
+        "keywords": ["verify-code-box-otp-char"],
+        "parameter": "1"} ]
+        },
+        {"action_name" : "Click",
+        "keywords": ["conferma"]},
+        {"action_name" : "Wait",
+        "seconds": 20}
+    ]
+}
+

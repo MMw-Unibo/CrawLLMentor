@@ -1,0 +1,12 @@
+{
+    "cookie_banner_detection" : {
+        "elements" : {
+            "button" : ["accetta tutti i cookie"]
+        }
+    },
+    "actions" : [
+        {"action_name" : "Click",
+        "keywords": ["ACCETTA TUTTI"]}
+    ]
+}
+

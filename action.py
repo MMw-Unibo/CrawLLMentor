@@ -28,8 +28,6 @@ def parse_graph_action(action):
         action = Follow(action["_element"])
     elif action_type == "Select":
         action = Select(action["_element"], action["_option"])
-    elif action_type == "Form":
-        action = Form(action["_element"], action["_actions"])
     elif action_type == "Type":
         action = Type(action["_element"], action["_text"])
     elif "Multiple" in action_type:
@@ -312,62 +310,6 @@ class Type(Action):
     
     def is_form(self):
         return self._form
-    
-
-class Form(Action):
-    def get_type(self):
-        return self._action_type
-    def __init__(self, actions):
-        self. _action_type = "Form"
-        self._actions = actions
-        self._actions_list = [str(action) for action in actions]
-
-    def __hash__(self):
-        return hash(tuple(self._actions_list))
-
-    def __eq__(self, other):
-        if isinstance(other, Form):
-            return self.__hash__() == other.__hash__()
-
-    def __str__(self):
-        return "Form " + json.dumps(self._actions_list)
-
-    def __call__(self, driver):
-        for action in self._actions:
-            action(driver)
-            time.sleep(1)
-
-    def __repr__(self):
-        return self._action_type + " " + json.dumps(self._element)
-    
-
-    
-class Login(Action):
-    def get_type(self):
-        return self._action_type
-    def __init__(self, actions):
-        self._action_type = "Login"
-        self._actions = actions
-        self._actions_list = [str(action) for action in actions]
-
-    def __hash__(self):
-        return hash(tuple(self._actions_list))
-
-    def __eq__(self, other):
-        if isinstance(other, Form):
-            return self.__hash__() == other.__hash__()
-
-    def __str__(self):
-        return "Form " + json.dumps(self._actions_list)
-
-    def __call__(self, driver):
-        for action in self._actions:
-            action(driver)
-            time.sleep(1)
-
-    def __repr__(self):
-        return self.__str__()
-
 
 class MultipleActions(Action):
     def __init__(self, actions):

@@ -1,4 +1,3 @@
-import difflib
 import json
 from html_utility import same_element
 class State:
@@ -10,9 +9,6 @@ class State:
         self._parametric_state = parametric_state
         self._label = label
         self._has_form = has_form
-
-    """ def __hash__(self):
-        return hash(json.dumps(self._elements) + ' ' + self._visible_text) """
     
     def __repr__(self):
         els = ""
