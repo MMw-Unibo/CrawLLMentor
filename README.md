@@ -36,17 +36,17 @@ Web applications play a vital role in various critical aspects of daily life, fr
 ## Usage
 To run the crawler, use the following command:
 ```bash
-python selenium_crawler.py -bu <base_url> -wl <white_list> -d <results_directory> -cc <chatgpt_cache>
+python crawllmentor.py -bu <base_url> -wl <white_list> -d <results_directory>
 ```
 
 ### Command Line Arguments
 - `-bu`, `--base_urls`: Base URL of the website to crawl (required).
 - `-wl`, `--white_list`: White list of the website to crawl (required).
+- `-d`, `--directory`: Directory where to save the results (required).
 - `-a`, `--authentication`: Authentication JSON file (optional).
 - `-lc`, `--logout_conditions`: Logout conditions JSON file (optional).
 - `-fa`, `--forbidden_actions`: Forbidden actions JSON file (optional).
-- `-d`, `--directory`: Directory where to save the results (required).
-- `-cc`, `--chatgpt_cache`: ChatGPT cache to use (required).
+- `-cc`, `--chatgpt_cache`: ChatGPT cache to use (optional).
 - `-htc`, `--header_token_cookie`: Headers/tokens/cookies to set (optional).
 
 ---
