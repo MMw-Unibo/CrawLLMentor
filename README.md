@@ -54,7 +54,7 @@ python crawllmentor.py -bu <base_url> -wl <white_list> -d <results_directory>
 ## File Descriptions
 
 ### Main Files
-- **`selenium_crawler.py`**: Main script to run the web crawler.
+- **`crawllmentor.py`**: Main script to run the web crawler.
 - **`graph.py`**: Contains the `Graphs` class for managing and visualizing the website's structure.
 - **`state.py`**: Defines the `State` class representing the state of a web page.
 - **`action.py`**: Defines various action classes (`Click`, `Follow`, `Select`, `Type`, etc.) for interacting with web elements.
